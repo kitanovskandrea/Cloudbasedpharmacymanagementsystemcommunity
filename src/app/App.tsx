@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Dashboard } from "./components/Dashboard";
 import { InventoryManagement } from "./components/InventoryManagement";
 import { PrescriptionManagement } from "./components/PrescriptionManagement";
@@ -26,10 +26,29 @@ type User = {
 };
 
 export default function App() {
-  const [currentUser, setCurrentUser] = useState<User | null>(
-    null,
-  );
-  const [activeTab, setActiveTab] = useState("dashboard");
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const [activeTab, setActiveTab] = useState<string>("dashboard");
+
+  // 🔥 Role-based default tab
+  const getDefaultTab = (role: User["role"]) => {
+    switch (role) {
+      case "admin":
+        return "users"; // Manage roles
+      case "doctor":
+        return "patients"; // Patient Information
+      case "pharmacist":
+        return "dashboard"; // default view
+      default:
+        return "dashboard";
+    }
+  };
+
+  // 🔥 Auto-redirect after login
+  useEffect(() => {
+    if (currentUser) {
+      setActiveTab(getDefaultTab(currentUser.role));
+    }
+  }, [currentUser]);
 
   if (!currentUser) {
     return <Login onLogin={setCurrentUser} />;
@@ -44,7 +63,7 @@ export default function App() {
       id: "dashboard",
       label: "Dashboard",
       icon: LayoutDashboard,
-      roles: ["doctor", "pharmacist"],
+      roles: ["pharmacist"],
     },
     {
       id: "inventory",
@@ -56,7 +75,7 @@ export default function App() {
       id: "prescriptions",
       label: "E-Prescriptions",
       icon: FileText,
-      roles: ["doctor", "pharmacist"],
+      roles: ["pharmacist"],
     },
     {
       id: "patients",
@@ -66,7 +85,7 @@ export default function App() {
     },
     {
       id: "branches",
-      label: "Synchronize pharmacy branches ",
+      label: "Synchronize pharmacy branches",
       icon: Building2,
       roles: ["admin"],
     },
@@ -88,15 +107,18 @@ export default function App() {
       {/* Sidebar */}
       <aside className="w-64 bg-white border-r border-gray-200 flex flex-col">
         <div className="p-6 border-b border-gray-200">
-          <p className="text-blue-600">
+          <p className="text-blue-600 font-semibold">
             Cloud-based Pharmacy Management System
           </p>
         </div>
 
+        {/* Navigation */}
         <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
           {navItems.map((item) => {
             if (!hasAccess(item.roles)) return null;
+
             const Icon = item.icon;
+
             return (
               <button
                 key={item.id}
@@ -114,6 +136,7 @@ export default function App() {
           })}
         </nav>
 
+        {/* Logout */}
         <div className="p-4 border-t border-gray-200">
           <button
             onClick={handleLogout}
@@ -131,21 +154,27 @@ export default function App() {
           {activeTab === "dashboard" && (
             <Dashboard user={currentUser} />
           )}
+
           {activeTab === "inventory" && (
             <InventoryManagement user={currentUser} />
           )}
+
           {activeTab === "prescriptions" && (
             <PrescriptionManagement user={currentUser} />
           )}
+
           {activeTab === "sales" && (
             <SalesDispensing user={currentUser} />
           )}
+
           {activeTab === "patients" && (
             <PatientRecords user={currentUser} />
           )}
+
           {activeTab === "branches" && (
             <BranchManagement user={currentUser} />
           )}
+
           {activeTab === "users" && (
             <UserManagement user={currentUser} />
           )}

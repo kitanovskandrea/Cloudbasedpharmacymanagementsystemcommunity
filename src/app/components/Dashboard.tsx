@@ -1,9 +1,6 @@
 import {
-  TrendingUp,
   TrendingDown,
   Package,
-  FileText,
-  ShoppingCart,
   AlertTriangle,
 } from "lucide-react";
 
