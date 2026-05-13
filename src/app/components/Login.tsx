@@ -5,7 +5,7 @@ type User = {
   id: string;
   name: string;
   email: string;
-  role: "admin" | "pharmacist" | "doctor" | "staff";
+  role: "admin" | "pharmacist" | "doctor";
   branch: string;
 };
 
@@ -36,7 +36,7 @@ export function Login({ onLogin }: LoginProps) {
     "doctor@cloudpharm.com": {
       id: "3",
       name: "Vangel Markovski",
-      email: "manager@cloudpharm.com",
+      email: "doctor@cloudpharm.com",
       role: "doctor",
       branch: "Downtown Branch",
     },

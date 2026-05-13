@@ -23,15 +23,18 @@ export function Dashboard({ user }: DashboardProps) {
     {
       label: "Items in Stock",
       value: "3,847",
-
       icon: Package,
       color: "purple",
+      trending: "up",
+      change : "5.2%",
     },
     {
       label: "Expiring Soon (30 days)",
       value: "23",
       icon: AlertTriangle,
       color: "orange",
+      trending : "warning",
+      
     },
   ];
 

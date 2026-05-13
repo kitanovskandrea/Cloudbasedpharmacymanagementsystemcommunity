@@ -117,8 +117,7 @@ export function InventoryManagement({ user }: { user: User }) {
   const categories = ['all', 'Antibiotics', 'Cardiovascular', 'Diabetes', 'Pain Relief', 'Gastrointestinal'];
 
   const filteredInventory = inventory.filter(item => {
-    const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         item.sku.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory = filterCategory === 'all' || item.category === filterCategory;
     return matchesSearch && matchesCategory;
   });

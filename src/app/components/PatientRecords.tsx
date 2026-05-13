@@ -49,21 +49,6 @@ export function PatientRecords({ user }: { user: any }) {
           medications: ["Amoxicillin 500mg", "Ibuprofen 400mg"],
           status: "Pending",
         },
-        // },
-        // {
-        //   id: 'RX-2024-0987',
-        //   date: '2024-11-15',
-        //   doctor: 'Dr. Michael Johnson',
-        //   medications: ['Metformin 850mg'],
-        //   status: 'Fulfilled'
-        // },
-        // {
-        //   id: 'RX-2024-0856',
-        //   date: '2024-10-28',
-        //   doctor: 'Dr. Sarah Smith',
-        //   medications: ['Lisinopril 10mg'],
-        //   status: 'Fulfilled'
-        // }
       ],
     },
   ];

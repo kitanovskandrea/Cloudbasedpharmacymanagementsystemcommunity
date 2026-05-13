@@ -11,7 +11,6 @@ import {
   LayoutDashboard,
   Package,
   FileText,
-  ShoppingCart,
   Users,
   Building2,
   UserCog,
@@ -22,7 +21,7 @@ type User = {
   id: string;
   name: string;
   email: string;
-  role: "admin" | "pharmacist" | "doctor" | "staff";
+  role: "admin" | "pharmacist" | "doctor";
   branch: string;
 };
 
@@ -45,13 +44,13 @@ export default function App() {
       id: "dashboard",
       label: "Dashboard",
       icon: LayoutDashboard,
-      roles: ["admin", "doctor", "pharmacist", "staff"],
+      roles: ["doctor", "pharmacist"],
     },
     {
       id: "inventory",
       label: "Manage Inventory",
       icon: Package,
-      roles: ["admin", "pharmacist", "staff"],
+      roles: ["pharmacist"],
     },
     {
       id: "prescriptions",
@@ -59,7 +58,6 @@ export default function App() {
       icon: FileText,
       roles: ["doctor", "pharmacist"],
     },
-    // { id: 'sales', label: 'Sales & Dispensing', icon: ShoppingCart, roles: ['admin', 'manager', 'pharmacist', 'staff'] },
     {
       id: "patients",
       label: "Patient Information",

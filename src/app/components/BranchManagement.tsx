@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Building2, MapPin, Phone, Users, Package, TrendingUp } from 'lucide-react';
+import { Building2, MapPin, Phone, Users } from 'lucide-react';
 
 type Branch = {
   id: string;
@@ -26,7 +26,7 @@ export function BranchManagement({ user }: { user: any }) {
       employees: 12,
       inventory: 3847,
       salesThisMonth: 145890,
-      lastSync: '2024-12-01T11:30:00'
+      lastSync: '2026-05-25T11:30:00'
     },
     {
       id: 'BR-002',
@@ -38,7 +38,7 @@ export function BranchManagement({ user }: { user: any }) {
       employees: 8,
       inventory: 2156,
       salesThisMonth: 98450,
-      lastSync: '2024-12-01T11:28:00'
+      lastSync: '2026-05-25T11:28:00'
     },
     {
       id: 'BR-003',
@@ -50,7 +50,7 @@ export function BranchManagement({ user }: { user: any }) {
       employees: 6,
       inventory: 1823,
       salesThisMonth: 76230,
-      lastSync: '2024-12-01T11:25:00'
+      lastSync: '2026-05-25T11:25:00'
     },
     {
       id: 'BR-004',
@@ -62,7 +62,7 @@ export function BranchManagement({ user }: { user: any }) {
       employees: 10,
       inventory: 2943,
       salesThisMonth: 112340,
-      lastSync: '2024-12-01T11:32:00'
+      lastSync: '2026-05-25T11:32:00'
     }
   ]);
 
