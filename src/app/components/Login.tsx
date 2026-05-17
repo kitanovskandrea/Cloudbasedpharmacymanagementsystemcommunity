@@ -40,13 +40,6 @@ export function Login({ onLogin }: LoginProps) {
       role: "doctor",
       branch: "Downtown Branch",
     },
-    /* "staff@cloudpharm.com": {
-      id: "4",
-      name: "Emily Davis",
-      email: "staff@cloudpharm.com",
-      role: "staff",
-      branch: "West Side Branch",
-    },*/
   };
 
   const handleSubmit = (e: React.FormEvent) => {
